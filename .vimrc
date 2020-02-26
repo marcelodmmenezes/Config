@@ -3,6 +3,9 @@ syntax on
 set number
 set ruler
 
+set splitbelow
+set splitright
+
 set hlsearch
 set incsearch
 
