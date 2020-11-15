@@ -1,0 +1,90 @@
+Config {
+	font = "xft:Ubuntu Mono:pixelsize=16:antialias=true:hinting=true",
+	additionalFonts = [],
+
+	borderColor = "black",
+	border = TopB,
+
+	bgColor = "black",
+	fgColor = "grey",
+	alpha = 255,
+
+	position = Top,
+
+	textOffset = -1,
+	iconOffset = -1,
+
+	lowerOnStart = True,
+	pickBroadest = False,
+	persistent = False,
+	hideOnStart = False,
+
+	iconRoot = ".",
+
+	allDesktops = True,
+	overrideRedirect = True,
+
+	commands = [
+		Run StdinReader,
+
+		Run Cpu [
+				"-t", "CPU: <total>%", 
+				"-H", "100",
+				"-L", "99",
+				"-h", "red"
+			]
+			10,
+
+		Run Memory [
+				"-t", "MEM: <usedratio>%",
+				"-H", "100",
+				"-L", "99",
+				"-h", "red"
+			]
+			10,
+
+		Run Swap [
+				"-t", "SWAP: <usedratio>%",
+				"-H", "100",
+				"-L", "99",
+				"-h", "red"
+			]
+			10,
+
+		Run DynNetwork [
+				"-t", "ETH: <rx> <tx>",
+				"-S", "True",
+				"-w", "7"
+			]
+			10,
+
+		Run DiskU [
+				("/", "S_DSK: <used>/<size>"), ("sdc2", "<usedbar>"),
+				("/mnt/Tantive", " | T_DSK: <used>/<size>"), ("sda4", "<usedbar>"),
+				("/mnt/Nebulon", " | N_DSK: <used>/<size>"), ("sdd2", "<usedbar>"),
+				("/mnt/Raddus", " | R_DSK: <used>/<size>"), ("sdb2", "<usedbar>")
+			]
+			[
+				"-L", "50",
+				"-H", "80",
+				"-n", "yellow",
+				"-h", "red",
+				"-m", "1",
+				"-p", "3"
+			]
+			10
+	],
+
+	sepChar = "%",
+	alignSep = "}{",
+
+	template =
+		"%StdinReader%\
+		\}{\
+		\<fc=#55ccff> %cpu% </fc> \
+		\<fc=#ee7777> %memory% </fc> \
+		\<fc=#eebb44> %swap% </fc> \
+		\<fc=#44bb66> %disku% </fc> \
+		\<fc=#bb66ee> %dynnetwork% </fc>"
+}
+

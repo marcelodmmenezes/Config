@@ -1,0 +1,50 @@
+Config {
+	font = "xft:Ubuntu Mono:pixelsize=16:antialias=true:hinting=true",
+	additionalFonts = [],
+
+	borderColor = "black",
+	border = TopB,
+
+	bgColor = "black",
+	fgColor = "grey",
+	alpha = 255,
+
+	position = Top,
+
+	textOffset = -1,
+	iconOffset = -1,
+
+	lowerOnStart = True,
+	pickBroadest = False,
+	persistent = False,
+	hideOnStart = False,
+
+	iconRoot = ".",
+
+	allDesktops = True,
+	overrideRedirect = True,
+
+	commands = [
+		Run StdinReader,
+
+		Run Date "%a %b %_d %Y %H:%M:%S" "date" 10,
+
+		Run Weather "SBBH" [
+				"-t", "<station>: <tempC>ºC",
+				"-L", "25",
+				"-H", "30",
+				"-n", "lightyellow",
+				"-h", "lightred",
+				"-l", "lightblue"
+			]
+			36000,
+
+		Run Com "uname" ["-s","-r"] "" 36000
+	],
+
+	sepChar = "%",
+	alignSep = "}{",
+
+	template = "%StdinReader% } <fc=#ee9a00>%date%</fc> { %SBBH% | %uname%"
+}
+
