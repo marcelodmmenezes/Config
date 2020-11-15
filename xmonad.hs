@@ -4,13 +4,15 @@ import System.Exit
 
 import XMonad.Util.Run
 import XMonad.Util.SpawnOnce
-import XMonad.Hooks.ManageDocks
 
-import Graphics.X11.ExtraTypes.XF86
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.DynamicLog
+
+import XMonad.Layout.Spacing
 
 import XMonad.Actions.FindEmptyWorkspace
 
-import XMonad.Hooks.DynamicLog
+import Graphics.X11.ExtraTypes.XF86
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -26,7 +28,7 @@ myClickJustFocuses = False
  
 myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
 
-myBorderWidth = 1
+myBorderWidth = 2
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor = "#00cc00"
 
@@ -146,7 +148,13 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $ [
 ----------
 -- LAYOUTS
 ----------
-myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
+mySpacing = spacingRaw True
+    (Border 0 15 10 10)
+	True
+	(Border 5 5 5 5)
+	True
+
+myLayout = mySpacing $ avoidStruts (tiled ||| Mirror tiled ||| Full)
     where
         -- default tiling algorithm partitions the screen into two panes
         tiled = Tall nmaster delta ratio
