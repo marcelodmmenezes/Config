@@ -58,22 +58,22 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
         ((modm, xK_Tab), windows W.focusDown),
 
         -- Move focus to the next window
-        ((modm, xK_h), windows W.focusDown),
+        ((modm, xK_h), windows W.focusUp),
 
         -- Move focus to the previous window
-        ((modm, xK_l), windows W.focusUp),
+        ((modm, xK_l), windows W.focusDown),
+
+        -- Swap the focused window with the next window
+        ((modm .|. shiftMask, xK_h), windows W.swapUp),
+
+        -- Swap the focused window with the previous window
+        ((modm .|. shiftMask, xK_l), windows W.swapDown),
 
         -- Move focus to the master window
         ((modm, xK_m), windows W.focusMaster),
 
         -- Swap the focused window and the master window
         ((modm, xK_Return), windows W.swapMaster),
-
-        -- Swap the focused window with the next window
-        ((modm .|. shiftMask, xK_h), windows W.swapDown),
-
-        -- Swap the focused window with the previous window
-        ((modm .|. shiftMask, xK_l), windows W.swapUp),
 
         -- Shrink the master area
         ((modm .|. shiftMask, xK_comma), sendMessage Shrink),
