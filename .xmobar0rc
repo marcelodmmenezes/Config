@@ -60,9 +60,9 @@ Config {
 
 		Run DiskU [
 				("/", "S_DSK: <used>/<size>"), ("sdc2", "<usedbar>"),
-				("/mnt/Tantive", " | T_DSK: <used>/<size>"), ("sda4", "<usedbar>"),
-				("/mnt/Nebulon", " | N_DSK: <used>/<size>"), ("sdd2", "<usedbar>"),
-				("/mnt/Raddus", " | R_DSK: <used>/<size>"), ("sdb2", "<usedbar>")
+				("/mnt/Tantive", "| T_DSK: <used>/<size>"), ("sda4", "<usedbar>"),
+				("/mnt/Nebulon", "| N_DSK: <used>/<size>"), ("sdd2", "<usedbar>"),
+				("/mnt/Raddus", "| R_DSK: <used>/<size>"), ("sdb2", "<usedbar>")
 			]
 			[
 				"-L", "50",

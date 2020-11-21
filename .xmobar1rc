@@ -30,12 +30,12 @@ Config {
 		Run Date "%a %b %_d %Y %H:%M:%S" "date" 10,
 
 		Run Weather "SBBH" [
-				"-t", "<station>: <tempC>ºC",
-				"-L", "25",
-				"-H", "30",
-				"-n", "lightyellow",
-				"-h", "lightred",
-				"-l", "lightblue"
+				"-t", "<tempC>ºC",
+				"-H", "20",
+				"-L", "35",
+				"-h", "#dd8888",
+				"-n", "#ddddaa",
+				"-l", "#88aadd"
 			]
 			36000,
 
@@ -45,6 +45,6 @@ Config {
 	sepChar = "%",
 	alignSep = "}{",
 
-	template = "%StdinReader% } <fc=#ee9a00>%date%</fc> { %SBBH% | %uname%"
+	template = "%StdinReader% } <fc=#ee9a00>%date%</fc> | %SBBH% { %uname%"
 }
 

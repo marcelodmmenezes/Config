@@ -17,10 +17,11 @@ import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
-myTerminal = "xterm"
+myTerminal = "alacritty"
 
 myModMask = mod4Mask
 
+myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
 
 myClickJustFocuses :: Bool
@@ -94,7 +95,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $ [
         -- Programs
         ((modm, xK_o), spawn $ XMonad.terminal conf),
         ((modm, xK_i), spawn "google-chrome"),
-        ((modm, xK_u), spawn "nautilus --new-window"),
 
         -- Volume keys
         ((0, xF86XK_AudioLowerVolume), spawn "amixer -D pulse sset Master 5%-"),
